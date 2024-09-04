@@ -3,6 +3,7 @@ package com.baris.recipe_app.controller;
 import com.baris.recipe_app.model.Recipe;
 import com.baris.recipe_app.service.RecipeService;
 import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -25,9 +26,14 @@ public class RecipeController {
         return recipeService.getAllRecipes();
     }
 
+    @SneakyThrows
+    @GetMapping("/{id}")
+    public Recipe getRecipe(@PathVariable int id) {
+        return recipeService.getRecipe(id);
+    }
+
     @PutMapping("/update/{id}")
-    public String update(@PathVariable int id, @RequestBody Recipe recipe) {
-        recipeService.updateRecipe(id, recipe);
-        return "Recipe has been updated";
+    public Recipe update(@PathVariable int id, @RequestBody Recipe recipe) {
+        return recipeService.updateRecipe(id, recipe);
     }
 }

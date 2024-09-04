@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Paper } from '@material-ui/core';
+import { useNavigate } from 'react-router-dom';
 
 const paperStyle = { padding: '50px 20px', width: "95%", margin: '20px auto' };
 
@@ -12,6 +13,7 @@ interface Recipe {
 
 export default function RecipeList() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:8080/recipe/getAll")
@@ -20,6 +22,10 @@ export default function RecipeList() {
       .catch(error => console.error('Error fetching recipes:', error));
   }, []);
 
+  const handleRecipeClick = (id: number) => {
+    navigate(`/recipe/${id}`);
+  };
+
   return (
     <div>
       <h1 style={{ textAlign: 'center' }}>Recipes</h1>
@@ -27,8 +33,9 @@ export default function RecipeList() {
         {recipes.map(recipe => (
           <Paper
             elevation={6}
-            style={{ margin: '10px', padding: '15px', textAlign: 'left' }}
+            style={{ margin: '10px', padding: '15px', textAlign: 'left', cursor: 'pointer' }}
             key={recipe.id}
+            onClick={() => handleRecipeClick(recipe.id)}
           >
             Id: {recipe.id}<br />
             Name: {recipe.name}<br />
