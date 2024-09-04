@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Recipe from './components/Recipe';
-import RecipeList from './components/RecipeList'; // Import your new RecipeList component
+import CreateRecipe from './components/CreateRecipe';
+import GetAllRecipe from './components/GetAllRecipes';
 import SearchAppBar from './components/SearchAppBar';
 
 function App() {
@@ -8,8 +8,8 @@ function App() {
     <Router>
       <SearchAppBar />
       <Routes>
-        <Route path="/" element={<Recipe />} />
-        <Route path="/recipes" element={<RecipeList />} />
+        <Route path="/" element={<CreateRecipe />} />
+        <Route path="/recipes" element={<GetAllRecipe />} />
       </Routes>
     </Router>
   );

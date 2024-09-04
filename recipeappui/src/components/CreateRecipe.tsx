@@ -27,7 +27,7 @@ export default function Recipe() {
   const [ingredients, setIngredients] = useState("")
   const [url, setUrl] = useState("")
   const [calories, setCalories] = useState<number>(0)
-  const handleClick=async(e)=>{
+  const handleClick=async(e: { preventDefault: () => void; })=>{
     e.preventDefault()
     const recipe={name,ingredients,url,calories}
     console.log(recipe)
