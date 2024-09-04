@@ -22,4 +22,15 @@ public class RecipeServiceImpl implements RecipeService {
     public List<Recipe> getAllRecipes() {
         return recipeRepository.findAll();
     }
+
+    @Override
+    public Recipe updateRecipe(int id, Recipe updatedRecipe) {
+        Recipe oldRecipe = recipeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Recipe not found with id: " + id));
+        oldRecipe.setName(updatedRecipe.getName());
+        oldRecipe.setIngredients(updatedRecipe.getIngredients());
+        oldRecipe.setUrl(updatedRecipe.getUrl());
+        oldRecipe.setCalories(updatedRecipe.getCalories());
+        return recipeRepository.save(oldRecipe);
+    }
 }

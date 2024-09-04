@@ -24,4 +24,10 @@ public class RecipeController {
     public List<Recipe> getAllRecipes() {
         return recipeService.getAllRecipes();
     }
+
+    @PutMapping("/update/{id}")
+    public String update(@PathVariable int id, @RequestBody Recipe recipe) {
+        recipeService.updateRecipe(id, recipe);
+        return "Recipe has been updated";
+    }
 }
