@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Paper } from '@material-ui/core';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Button, Paper } from '@material-ui/core';
 
 interface Recipe {
   id: number;
@@ -13,6 +13,7 @@ interface Recipe {
 export default function GetRecipe() {
   const { id } = useParams<{ id: string }>();
   const [recipe, setRecipe] = useState<Recipe | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(`http://localhost:8080/recipe/${id}`)
@@ -25,6 +26,10 @@ export default function GetRecipe() {
     return <div>Loading...</div>;
   }
 
+  const handleUpdateClick = () => {
+    navigate(`/update/${recipe.id}`);
+  };
+
   return (
     <Paper elevation={3} style={{ padding: '20px', margin: '20px' }}>
       <h2>{recipe.name}</h2>
@@ -32,6 +37,14 @@ export default function GetRecipe() {
       <p><strong>Ingredients:</strong> {recipe.ingredients}</p>
       <p><strong>URL:</strong> <a href={recipe.url}>{recipe.url}</a></p>
       <p><strong>Calories:</strong> {recipe.calories}</p>
+      <Button 
+        variant="contained" 
+        color="primary" 
+        onClick={handleUpdateClick}
+        style={{ marginTop: '20px' }}
+      >
+        Update Recipe
+      </Button>
     </Paper>
   );
 }
