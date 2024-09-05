@@ -39,6 +39,7 @@ export default function Recipe() {
       body: JSON.stringify(recipe),
     }).then(()=>{
         console.log("New Recipe added")
+        alert('Recipe added successfully');
     })
   }
 
