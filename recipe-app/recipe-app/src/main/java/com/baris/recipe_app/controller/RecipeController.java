@@ -16,9 +16,8 @@ public class RecipeController {
     private RecipeService recipeService;
 
     @PostMapping("/add")
-    public String add(@RequestBody Recipe recipe) {
-        recipeService.saveRecipe(recipe);
-        return "New recipe is added";
+    public Recipe add(@RequestBody Recipe recipe) {
+        return recipeService.saveRecipe(recipe);
     }
 
     @GetMapping("/getAll")
@@ -35,5 +34,10 @@ public class RecipeController {
     @PutMapping("/update/{id}")
     public Recipe update(@PathVariable int id, @RequestBody Recipe recipe) {
         return recipeService.updateRecipe(id, recipe);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String delete(@PathVariable int id) {
+        return recipeService.deleteRecipe(id);
     }
 }

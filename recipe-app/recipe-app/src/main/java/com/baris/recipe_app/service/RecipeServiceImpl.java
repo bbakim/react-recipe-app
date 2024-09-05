@@ -38,4 +38,10 @@ public class RecipeServiceImpl implements RecipeService {
         oldRecipe.setCalories(updatedRecipe.getCalories());
         return recipeRepository.save(oldRecipe);
     }
+
+    @Override
+    public String deleteRecipe(int id) {
+        recipeRepository.deleteById(id);
+        return "Recipe deleted";
+    }
 }

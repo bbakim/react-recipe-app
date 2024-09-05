@@ -6,8 +6,9 @@ import org.springframework.data.crossstore.ChangeSetPersister;
 import java.util.List;
 
 public interface RecipeService {
-    public Recipe saveRecipe(Recipe recipe);
-    public List<Recipe> getAllRecipes();
-    public Recipe getRecipe(int id) throws ChangeSetPersister.NotFoundException;
-    public Recipe updateRecipe(int id, Recipe recipe);
+    Recipe saveRecipe(Recipe recipe);
+    List<Recipe> getAllRecipes();
+    Recipe getRecipe(int id) throws ChangeSetPersister.NotFoundException;
+    Recipe updateRecipe(int id, Recipe recipe);
+    String deleteRecipe(int id);
 }

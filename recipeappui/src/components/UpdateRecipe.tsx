@@ -70,7 +70,7 @@ export default function UpdateRecipe() {
   }
 
   if (!recipe) {
-    return <div>Loading...</div>;
+    return <div>Unable to get recipe...</div>;
   }
 
   return (
@@ -78,55 +78,55 @@ export default function UpdateRecipe() {
       <form className={classes.root} noValidate autoComplete="off">
         <h1 style={{ textAlign: 'center' }}>Update Recipe</h1>
         <Paper elevation={3} style={paperStyle}>
-        <div>
-          <TextField
-            required
-            id="name"
-            label="Name"
-            variant="outlined"
-            value={name}
-            onChange={(e)=>setName(e.target.value)}
-          />
-          <TextField
-            required
-            id="ingredients"
-            label="Ingredients"
-            variant="outlined"
-            value={ingredients}
-            onChange={(e)=>setIngredients(e.target.value)}
-          />
-          <TextField
-            required
-            id="url"
-            label="URL"
-            variant="outlined"
-            value={url}
-            onChange={(e)=>setUrl(e.target.value)}
-          />
-          <TextField
-            required
-            id="calories"
-            label="Calories"
-            type="number"
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-            value={calories}
-            onChange={(e)=>setCalories(parseInt(e.target.value))}
-          />
-        </div>
-        <Button
-          variant="contained"
-          color="primary"
-          size="large"
-          style={{ display: 'block', margin: '0 auto' }}
-          className={classes.button}
-          startIcon={<SaveIcon />}
-          onClick={handleClick}
-        >
-          Submit
-        </Button>
+          <div>
+            <TextField
+              required
+              id="name"
+              label="Name"
+              variant="outlined"
+              value={name}
+              onChange={(e)=>setName(e.target.value)}
+            />
+            <TextField
+              required
+              id="ingredients"
+              label="Ingredients"
+              variant="outlined"
+              value={ingredients}
+              onChange={(e)=>setIngredients(e.target.value)}
+            />
+            <TextField
+              required
+              id="url"
+              label="URL"
+              variant="outlined"
+              value={url}
+              onChange={(e)=>setUrl(e.target.value)}
+            />
+            <TextField
+              required
+              id="calories"
+              label="Calories"
+              type="number"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="outlined"
+              value={calories}
+              onChange={(e)=>setCalories(parseInt(e.target.value))}
+            />
+          </div>
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            style={{ display: 'block', margin: '0 auto' }}
+            className={classes.button}
+            startIcon={<SaveIcon />}
+            onClick={handleClick}
+          >
+            Submit
+          </Button>
         </Paper>
       </form>
     </div>
