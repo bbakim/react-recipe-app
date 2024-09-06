@@ -34,7 +34,6 @@ const DeleteRecipe: FC<DeleteRecipeProps> = ({ recipeId, onDeleteSuccess }) => {
         color="secondary"
         onClick={handleDelete}
         startIcon={<DeleteIcon />}
-        style={{ marginTop: '20px' }}
       >
         Delete Recipe
       </Button>
