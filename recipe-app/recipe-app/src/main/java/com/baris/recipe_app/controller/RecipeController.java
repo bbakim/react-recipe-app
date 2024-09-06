@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/recipe")
@@ -29,6 +30,11 @@ public class RecipeController {
     @GetMapping("/{id}")
     public Recipe getRecipe(@PathVariable int id) {
         return recipeService.getRecipe(id);
+    }
+
+    @GetMapping("/recipeByName/{name}")
+    public Optional<Recipe> getRecipeByName(@PathVariable String name) {
+        return recipeService.findByName(name);
     }
 
     @PutMapping("/update/{id}")
